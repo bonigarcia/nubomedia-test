@@ -1,9 +1,7 @@
-FROM nubomedia/apps-baseimage:v1
+FROM nubomedia/apps-baseimage:src
 
 MAINTAINER Nubomedia
 
-RUN mkdir /tmp/demo
-ADD kurento-tree-demo-embed-6.4.1-SNAPSHOT.jar /tmp/demo/
-ADD keystore.jks /
+ADD . /home/nubomedia
 
-ENTRYPOINT java -jar /tmp/demo/kurento-tree-demo-embed-6.4.1-SNAPSHOT.jar
+ENTRYPOINT cd /home/nubomedia && mvn spring-boot:run
